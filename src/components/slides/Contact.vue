@@ -7,28 +7,31 @@
           <span class="icon ml-3 mr-3"><a href="https://www.linkedin.com/in/ard-hamard/" target="_blank"><i class="fab fa-linkedin"></i></a></span>
           <span class="icon ml-3 mr-3"><a href="https://github.com/Antix09" target="_blank"><i class="fab fa-github"></i></a></span>
         </div>
-        <form @submit.prevent="sendEmail" class="w-75 mx-auto card-back" novalidate>
+        <form @submit.prevent="submitForm" class="w-75 mx-auto card-back" novalidate>
           <div class="form-group">
             <label>Nom</label>
-            <input type="text" v-model="name" name="name" class="form-control" placeholder="Votre nom">
+            <input v-model="name" type="text" name="name" placeholder="Votre nom" :class="{'form-control':true, 'is-invalid' : !validName(name) && nameTouched }" @blur="nameTouched = true">
+            <div class="invalid-feedback">Un nom valide est requis.</div>
           </div>
           <div class="form-group">
             <label>Email</label>
-            <input type="text" v-model="email" name="email" class="form-control" placeholder="Votre mail">
+            <input v-model="email" type="text" name="email" placeholder="Votre email" :class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailTouched }" @blur="emailTouched = true">
+            <div class="invalid-feedback">Un email valide est requis.</div>
           </div>
           <div class="form-group">
             <label>Message</label>
-            <textarea class="form-control" v-model="message" name="message" rows="4"></textarea>
+            <textarea :class="{'form-control':true, 'is-invalid' : !validName(name) && messageTouched }" v-model="message" name="message" rows="4" @blur="messageTouched = true"></textarea>
+            <div class="invalid-feedback">Un message est requis.</div>
           </div>
           <button type="submit" class="btn">Envoyer</button>
         </form>
       </div>
-      
   </div>
 </template>
 
 <script>
   import emailjs from 'emailjs-com';
+  import { service , template , user } from '../../configmail';
 
   export default {
 
@@ -36,26 +39,43 @@
       return {
         name: '',
         email: '',
-        message: ''
+        message: '',
+        emailTouched: false,
+        nameTouched: false,
+        messageTouched: false,
       }
     },
     methods: {
-      sendEmail(e) {
-        try {
-          emailjs.sendForm('service_f7c6xu8', 'template_lsjhrws', e.target,
-          'user_3UleQu94mlI2L07GEu7mc', {
-            name: this.name,
-            email: this.email,
-            message: this.message
-          })
+      validName (name) {
+        return name.match(/^[a-z ,.'-]+$/i);
+      },
+      validEmail(email) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; // eslint-disable-line
+        return re.test(email.toLowerCase());
+      },
+      validForm(){
+        this.emailTouched = this.nameTouched = this.messageTouched = true;
+          if( this.validEmail(this.email) && this.validName(this.name)){
+            return true;
+          }
+      },
+      submitForm(e) {
+        if (this.validForm()) {
+          try {
+            emailjs.sendForm( service, template, e.target,
+            user, {
+              name: this.name,
+              email: this.email,
+              message: this.message
+            })
 
-        } catch(error) {
+          } catch(error) {
             console.log({error})
-        }
-        // Reset des champs
-        this.name = ''
-        this.email = ''
-        this.message = ''
+          }
+          
+
+
+        } 
       },
     }
   }
@@ -77,4 +97,11 @@
   .icon:hover{
     opacity: 1;
   }
+
+  @media screen and (max-width: 1050px)
+      {
+        .card-back {
+          padding: 0;
+        }
+      }
 </style>

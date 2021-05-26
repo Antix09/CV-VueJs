@@ -92,4 +92,24 @@ export default {
     animation: fromright 1s;
   }
 
+  @media screen and (max-width: 1050px) {
+    .box {
+      width: 95%;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+
+    body {
+      font-size: 1rem;
+      line-height: 1.6rem;
+    }
+
+  }
 </style>

@@ -74,4 +74,11 @@ export default ({
   .container:hover .overlay {
     opacity: 1;
   }
+
+  @media screen and (max-width: 1050px)
+      {
+        .container {
+          padding: 0;
+        }
+      }
 </style>
