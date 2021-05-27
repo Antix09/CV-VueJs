@@ -4,8 +4,9 @@
     <h2>N'hésitez pas à me contacter</h2>
       <div class="card-back">
         <div class="text-center">
-          <span class="icon ml-3 mr-3"><a href="https://www.linkedin.com/in/ard-hamard/" target="_blank"><i class="fab fa-linkedin"></i></a></span>
-          <span class="icon ml-3 mr-3"><a href="https://github.com/Antix09" target="_blank"><i class="fab fa-github"></i></a></span>
+          <span class="icon ml-4 mr-4"><a href="https://www.linkedin.com/in/ard-hamard/" target="_blank"><i class="fab fa-linkedin"></i></a></span>
+          <span class="icon ml-4 mr-4"><a href="https://github.com/Antix09" target="_blank"><i class="fab fa-github"></i></a></span>
+          <span class="icon ml-4 mr-4"><a href="../../assets/cvantoine.pdf" download="cvantoine.pdf"><i class="fas fa-id-card"></i></a></span>
         </div>
         <form @submit.prevent="submitForm" class="w-75 mx-auto card-back" novalidate>
           <div class="form-group">

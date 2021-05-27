@@ -5,27 +5,27 @@
     <section class="d-flex flex-wrap justify-content-between card-back">
       <div class="container mb-5">
         <img src="../../assets/projets/cv_vuejs.jpg" alt="CV VueJs" width="250" height="250">
-        <div class="overlay">CV en VueJs</div>
+        <a href="https://github.com/Antix09/CV-VueJs" target="_blank"><div class="overlay">CV en VueJs</div></a>
       </div>
       <div class="container mb-5">
         <img src="../../assets/projets/boutique_vuejs.jpg" alt="App Boutique VueJs" width="250" height="250">
-        <div class="overlay">App Boutique VueJs</div>
+        <a href="https://github.com/Antix09/App-Boutique" target="_blank"><div class="overlay">App Boutique VueJs</div></a>
       </div>
       <div class="container mb-5">
         <img src="../../assets/projets/todo_ES6.jpg" alt="ToDoList ES6" width="250" height="250">
-        <div class="overlay">ToDoList en ES6</div>
+        <a href="https://github.com/Antix09/ToDoES6" target="_blank"><div class="overlay">ToDoList en ES6</div></a>
       </div>
       <div class="container mb-5">
         <img src="../../assets/projets/simon_vuejs.jpg" alt="JeuMemo VueJs" width="250" height="250">
-        <div class="overlay">Jeu Memo en VueJs</div>
+        <a href="https://github.com/Antix09/MemoVueJS" target="_blank"><div class="overlay">Jeu Memo en VueJs</div></a>
       </div>
       <div class="container mb-5">
         <img src="../../assets/projets/snake_ES6.jpg" alt="Snake ES6" width="250" height="250">
-        <div class="overlay">Jeu Snake en ES6</div>
+        <a href="https://github.com/Antix09/SnakeES6" target="_blank"><div class="overlay">Jeu Snake en ES6</div></a>
       </div>
       <div class="container mb-5">
         <img src="../../assets/projets/web_lumy.jpg" alt="Web LumyEvents" width="250" height="250">
-        <div class="overlay">Web - LumyEvents</div>
+        <a href="https://github.com/Antix09/Lumy-Vitrine" target="_blank"><div class="overlay">Web - LumyEvents</div></a>
       </div>
       <div class="container mb-5">
         <img src="../../assets/projets/print_lumy.jpg" alt="Print LumyEvents" width="250" height="250">
@@ -46,6 +46,11 @@ export default ({
 </script>
 
 <style scoped>
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
   img {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     display: block;
